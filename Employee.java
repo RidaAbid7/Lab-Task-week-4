@@ -42,7 +42,7 @@ public class Employee{
 
     //toString function
     public String toString(){
-        return String.format("\n\nEmployee Name: %s\nEmployee ID: %s\nEmployee Designation: %s", name, ID, designation);
+        return String.format("\nEmployee Name: %s\nEmployee ID: %s\nEmployee Designation: %s", this.name, this.ID, this.designation);
     }
 
     //clone function
@@ -50,11 +50,11 @@ public class Employee{
         return new Employee(this.name, this.ID, this.designation);
     }
     
-    //equals function to compare name
+    //equals function to compare all attributes of Emplou=yee class
     public boolean equals(Object o){
-        Lab temp = (Lab)o;
+        Employee temp = (Employee)o;
         boolean result = false;
-        if(this.name == temp.name){
+        if(this.name == temp.name && this.ID == temp.ID && this.designation == temp.designation){
             result = true;
         }
         else{

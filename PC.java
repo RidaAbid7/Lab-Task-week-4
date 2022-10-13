@@ -1,23 +1,24 @@
 public class PC {
     String assetID;
-    String name;
     String LCDName;
     int RamSizeinMB;
     int DiskSizeinGB;
 
     //constructor
-    public PC(String assetID, String name, String LCDName, int RamSizeinMB, int DiskSizeinGB){
+    public PC(String assetID, String LCDName, int RamSizeinMB, int DiskSizeinGB){
         this.assetID = assetID;
-        this.name = name;
         this.LCDName =LCDName;
         this.RamSizeinMB = RamSizeinMB;
         this.DiskSizeinGB = DiskSizeinGB;
     }
 
+    public PC(){
+        
+    }
+
     //copy constructor
     public PC(PC pc){
         this.assetID = pc.assetID;
-        this.name = pc.name;
         this.LCDName = pc.LCDName;
         this.RamSizeinMB = pc.RamSizeinMB;
         this.DiskSizeinGB = pc.DiskSizeinGB;
@@ -29,14 +30,6 @@ public class PC {
 
     public String getAssetID(){
         return assetID;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public String getName(){
-        return name;
     }
 
     public void setLCDName(String LCDName){
@@ -65,20 +58,20 @@ public class PC {
 
     //toString function
     public String toString(){
-        return String.format("\n\nAssetID: %s\nName: %s\nLCDName: %s\nRAM Size in MB: %d\nDisk Size in GB:%d", assetID, name, LCDName, RamSizeinMB, DiskSizeinGB);
+        return String.format("\n\nAssetID: %s\nLCDName: %s\nRAM Size in MB: %d\nDisk Size in GB:%d", this.assetID, this.LCDName, this.RamSizeinMB, this.DiskSizeinGB);
     }
     
     //clone function
     public Object clone(){
-        return new PC(this.assetID, this.name, this.LCDName, this.RamSizeinMB, this.DiskSizeinGB);
+        return new PC(this.assetID, this.LCDName, this.RamSizeinMB, this.DiskSizeinGB);
     }
 
-    //equals function to compare assetID
+    //equals function to compare all attributes of PC class
     public boolean equals(Object o){
         PC temp = (PC)o;
         boolean result = false;
         
-        if(this.assetID == temp.assetID){
+        if(this.assetID == temp.assetID && this.LCDName == temp.LCDName && this.RamSizeinMB == temp.RamSizeinMB && this.DiskSizeinGB == temp.DiskSizeinGB){
             result = true;
         }
         else{

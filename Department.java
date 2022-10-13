@@ -2,13 +2,20 @@ public class Department {
     String name;
     Employee HODName;
     Employee labIncharge;
-    Lab labs[] = new Lab[30];
+    Lab labs[] = new Lab[50];
+    int numberOfLabs;
+    int labCounter = 0;
 
-    public Department(String name, Employee HODName, Employee labIncharge, Lab labs[]){
+    public Department(String name, Employee HODName, Employee labIncharge, Lab labs[], int numberOfLabs){
         this.name = name;
         this.HODName = HODName;
         this.labIncharge = labIncharge;
         this.labs = labs;
+        this.numberOfLabs = numberOfLabs;
+    }
+
+    public Department(){
+
     }
 
     //copy constructor
@@ -17,6 +24,7 @@ public class Department {
         this.HODName = dep.HODName;
         this.labIncharge = dep.labIncharge;
         this.labs = dep.labs;
+        this.numberOfLabs = dep.numberOfLabs;
     }
 
     public void setName(String name){
@@ -51,22 +59,39 @@ public class Department {
         return labs;
     }
 
+    public void setNumberOfLabs(int numberOfLabs){
+        this.numberOfLabs = numberOfLabs;
+    }
+
+    public int getumberOfLabs(){
+        return numberOfLabs;
+    }
+
+    public int getLabCounter() {
+        return labCounter;
+    }
+
+    public void setLabCounter(int labCounter) {
+        this.labCounter = labCounter;
+    }
+
     //toString function
+    //Employee labIncharge, Lab labs[], int numberOfLabs
     public String toString(){
-        return String.format("\nHOD Name: %s\n", HODName);
+        return String.format("\nName: %s\n\nNumber of Labs: %d", this.name, this.numberOfLabs);
     }
 
     //clone function
     public Object clone(){
-        return new Department(this.name, this.HODName, this.labIncharge, this.labs);
+        return new Department(this.name, this.HODName, this.labIncharge, this.labs, this.numberOfLabs);
     }
 
-    //equals function to compare HOD Name
+    //equals function to compare Department name, HOD Name and lab incharge
     public boolean equals(Object o){
         Department temp = (Department)o;
         boolean result = false;
 
-        if(this.HODName == temp.HODName){
+        if(this.name == temp.name && this.HODName.equals(temp.HODName) && this.labIncharge.equals(temp.labIncharge)){
             result = true;
         }
         else{
